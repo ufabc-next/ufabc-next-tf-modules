@@ -28,4 +28,4 @@ jobs:
           wiki-sidebar-changelog-max: 5
           module-change-exclude-patterns:  ".gitignore,*.md,*.tftest.hcl,tests/**,examples/**"
           module-asset-exclude-patterns:  ".gitignore,*.md,*.tftest.hcl,tests/**,examples/**"
-          module-path-ignore: "terraform/**/examples,terraform/**/examples/**,terraform/**/tests,terraform/**/**/tests/**,terraform/**/docs/**,terraform/**/docs"
+          module-path-ignore: "**/examples,**/examples/**,**/tests,**/tests/**,**/docs/**,**/docs"
