@@ -1,9 +1,3 @@
-variable "github_branch" {
-  type        = string
-  description = "GitHub branch name, the permissions will be limited to this branch"
-  default     = "main"
-}
-
 variable "github_environment" {
   type        = string
   description = "GitHub environment name, the permissions will be limited to this environment"
