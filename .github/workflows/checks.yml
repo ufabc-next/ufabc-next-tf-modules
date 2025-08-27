@@ -34,6 +34,11 @@ jobs:
         files: |
           terraform/**/**.tf
 
+        files_ignore: |
+          **/examples/**
+          **/tests/**
+          **/docs/**
+
     - name: List all changed files
       run: echo '${{ steps.changed-files.outputs.all_changed_files }}'
   tflint:
@@ -165,7 +170,7 @@ jobs:
 
           </details>
 
-          *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`, Working Directory: \`${{ matrix.dirs }}\``, Workflow: \`${{ github.workflow }}\`*`;
+          *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`, Working Directory: \`${{ matrix.dirs }}\`, Workflow: \`${{ github.workflow }}\`*`;
 
           // 3. If we have a comment, update it, otherwise create a new one
           if (botComment) {
