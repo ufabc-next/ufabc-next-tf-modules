@@ -32,7 +32,7 @@ jobs:
         matrix: true
         quotepath: false
         files: |
-          terraform/**/**.tf
+          **/**.tf
 
         files_ignore: |
           **/examples/**
