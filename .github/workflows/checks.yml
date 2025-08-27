@@ -65,7 +65,9 @@ jobs:
       run: tflint --version
 
     - name: Init TFLint
-      run: tflint --init --config .tflint.hcl
+      run: |
+          export TFLINT_CONFIG=$(realpath .tflint.hcl)
+          tflint --init --config $TFLINT_CONFIG
       env:
         # https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/plugins.md#avoiding-rate-limiting
         GITHUB_TOKEN: ${{ github.token }}
@@ -99,22 +101,22 @@ jobs:
 
     - name: OpenTofu fmt
       id: fmt
-      run: tofu fmt -chdir ${{ matrix.dirs }} -check
+      run: tofu -chdir=${{ matrix.dirs }} fmt -check
 
     - name: OpenTofu Init
       if: always()
       id: init
-      run: tofu init -chdir ${{ matrix.dirs }}
+      run: tofu -chdir=${{ matrix.dirs }} init
 
     - name: OpenTofu Validate
       if: always()
       id: validate
-      run: tofu validate -chdir ${{ matrix.dirs }} -no-color
+      run: tofu -chdir=${{ matrix.dirs }} validate -no-color
 
     - name: OpenTofu Test
       if: always()
       id: test
-      run: tofu test -chdir ${{ matrix.dirs }} -no-color
+      run: tofu -chdir=${{ matrix.dirs }} test -no-color
 
     - uses: actions/github-script@v6
       if: ${{ github.event_name == 'pull_request' && always() }}
