@@ -24,6 +24,7 @@ jobs:
           patch-keywords: fix,chore
           default-first-tag: v1.0.0
           terraform-docs-version: v0.20.0
+          use-ssh-source-format: true
           delete-legacy-tags: true
           wiki-sidebar-changelog-max: 5
           module-change-exclude-patterns:  ".gitignore,*.md,*.tftest.hcl,tests/**,examples/**"
